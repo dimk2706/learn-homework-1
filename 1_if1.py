@@ -13,23 +13,23 @@
 * Вывести содержимое переменной на экран
 
 """
-def work(age1):
+def work(age):
     
-    if age1 == 0:
+    if age == 0:
        activity = "Вы еще не должны ходить в детский сад"
-    elif 0 < age1 < 7:
+    elif 0 < age < 7:
       activity = "Вы должны ходить в детский сад"
-    elif 7 <= age1 < 18:
+    elif 7 <= age < 18:
       activity = "Вы должны учиться в школе"
-    elif  age1 == 18:
+    elif  age == 18:
       activity = "Вы должны учиться в школе или ВУЗе"
-    elif  18 < age1 <= 22:
+    elif  18 < age <= 22:
       activity = "Вы должны учиться ВУЗе"
-    elif  23 <= age1 <= 24:
+    elif  23 <= age <= 24:
       activity = "Вы должны учиться ВУЗе или работать"
-    elif  24 < age1 < 65:
+    elif  24 < age < 65:
       activity = "Вы должны работать"
-    elif  65 <= age1 < 130:
+    elif  65 <= age < 130:
       activity = "Вы должны работать или быть на пенсии"
     else:
       activity = "Ошибка! Введен не корректный возраст!"
@@ -39,10 +39,9 @@ def work(age1):
     
         
 def main():
-    age = input("Введите возраст:")
+    input_age = input("Введите возраст:")
     try:
-      age = int(float(age))
-      action = work(age)
+      action = work(int(float(input_age)))    #float нужен на тот случай если пользователь введет не целое число
       print(action)
     except ValueError:
       print("Ошибка! Введено не число!")

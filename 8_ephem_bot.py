@@ -42,30 +42,9 @@ def greet_user_planet(update, context):
     dt_now=str(dt_now)
     dt_now=dt_now.replace("-", "/")
     user_text = update.message.text.split() #Разбиение сообщения от пользователя
-    if user_text[1]=="Mercury":             #В зависимости от введенной пользователем планеты выведется соответствующее сообщение
-      planet = ephem.Mercury(dt_now)
-      constellation = f"Планета Меркурий сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
-    elif user_text[1]=="Venus":
-      planet = ephem.Venus(dt_now)
-      constellation = f"Планета Венера сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
-    elif user_text[1]=="Mars":
-      planet = ephem.Mars(dt_now)
-      constellation = f"Планета Марс сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
-    elif user_text[1]=="Jupiter":
-      planet = ephem.Jupiter(dt_now)
-      constellation = f"Планета Юпитер сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
-    elif user_text[1]=="Saturn":
-      planet = ephem.Saturn(dt_now)
-      constellation = f"Планета Сатурн сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
-    elif user_text[1]=="Uranus":
-      planet = ephem.Uranus(dt_now)
-      constellation = f"Планета Уран сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
-    elif user_text[1]=="Neptune":
-      planet = ephem.Neptune(dt_now)
-      constellation = f"Планета Нептун сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
-    elif user_text[1]=="Pluto":
-      planet = ephem.Pluto(dt_now)
-      constellation = f"Плутон сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
+    if hasattr(ephem, user_text[1]):             #В зависимости от введенной пользователем планеты выведется соответствующее сообщение
+      planet = getattr(ephem, user_text[1])(dt_now)
+      constellation = f"{user_text[1]} сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
     else:
        constellation = "Некорректно введено название планеты."
     print(constellation)

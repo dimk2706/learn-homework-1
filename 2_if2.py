@@ -16,7 +16,7 @@
 """
 
 def compare(st1, st2):
-    if str(type(st1)) != "<class 'str'>" or str(type(st2)) != "<class 'str'>":
+    if not isinstance(st1, str) or not isinstance(st1, str):         # В данном случае используется именно or так как в задании сказано: "Проверить, является ли то, что передано функции, строками", если хотя бы одна из переменных не строка возвращаем 0
        return 0
     elif st1==st2:
        return 1

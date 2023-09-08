@@ -15,18 +15,10 @@
 * Посчитать и вывести суммарное количество продаж всех товаров
 * Посчитать и вывести среднее количество продаж всех товаров
 """
-def summ(list1):
-    sum1 = 0
-    for i in list1:
-        sum1 = sum1 + i
-    return sum1
 
-def mean(list1):
-    sum = 0
-    for i in list1:
-        sum = sum + i
-    mean1 = sum/len(list1)
-    return mean1
+def get_average(list1):
+    average = sum(list1)/len(list1)
+    return average
 
 def main():
     Phones = [
@@ -35,19 +27,22 @@ def main():
     {'product': 'Samsung Galaxy 21', 'items_sold': [343, 390, 238, 437, 214, 494, 441, 518, 212, 288, 272, 247]},
   ]
     sum_main = 0
-    mean_main = 0
+    average_main = 0
+    sum_list = []
+    average_list = []
     for one_product in Phones:
-        product_sum = summ(one_product['items_sold'])
-        print(f"Суммарное количество продаж для {one_product['product']}: {product_sum}")
+        product_sum = sum(one_product['items_sold'])
+        sum_list.append(f"Суммарное количество продаж для {one_product['product']}: {product_sum}")
         sum_main = sum_main + product_sum
-    for one_product in Phones:
-        product_mean = mean(one_product['items_sold'])
-        product_mean1 = int(product_mean)
-        print(f"Среднее количество продаж для {one_product['product']}: {product_mean1}")
-        mean_main = mean_main + product_mean
-    mean_main = int(mean_main/len(Phones))
+        product_average = get_average(one_product['items_sold'])
+        product_average1 = int(product_average)
+        average_list.append(f"Среднее количество продаж для {one_product['product']}: {product_average1}")
+        average_main = average_main + product_average
+    average_main = int(average_main/len(Phones))
+    print("\n".join(sum_list))
+    print("\n".join(average_list))
     print(f"Суммарное количество продаж для всех товаров: {sum_main}")
-    print(f"Среднее количество продаж для всех товаров: {mean_main}")
+    print(f"Среднее количество продаж для всех товаров: {average_main}")
 
     
     
