@@ -15,13 +15,14 @@
     
 """
 
-questions_and_answers = {}
+questions_and_answers = {"Как дела": "Хорошо!", "Что делаешь?": "Программирую",  "Какой сейчас год?": "2023", "Какой сейчас месяц?": "Сентябрь", 
+                         "Какое сегодня число?": "Седьмое", "Сколько времени?": "00:41"}
 
 def ask_user(answers_dict):
-    """
-    Замените pass на ваш код
-    """
-    pass
+    que = input("Введите вопрос: \n")
+    while que in questions_and_answers:
+      print(questions_and_answers[que])
+      que = input("Введите вопрос: \n")
     
 if __name__ == "__main__":
     ask_user(questions_and_answers)

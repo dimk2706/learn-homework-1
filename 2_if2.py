@@ -15,12 +15,35 @@
 
 """
 
+def compare(st1, st2):
+    if str(type(st1)) != "<class 'str'>" or str(type(st2)) != "<class 'str'>":
+       return 0
+    elif st1==st2:
+       return 1
+    elif len(st1) > len(st2):
+       return 2
+    elif st2 == "learn":
+       return 3
+      
+
 def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+    a = 2
+    b = 1
+    print(compare(a, b))
+    a = "aaa"
+    b = "aaa"
+    print(compare(a, b))
+    a = "aaaaaaaaaa"
+    b = "bbbbb"
+    print(compare(a, b))
+    a = "aaa"
+    b = "learn"
+    print(compare(a, b))
+
+
+
+
+  
     
 if __name__ == "__main__":
     main()

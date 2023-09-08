@@ -13,13 +13,42 @@
 * Вывести содержимое переменной на экран
 
 """
-
+def work(age1):
+    
+    if age1 == 0:
+       activity = "Вы еще не должны ходить в детский сад"
+    elif 0 < age1 < 7:
+      activity = "Вы должны ходить в детский сад"
+    elif 7 <= age1 < 18:
+      activity = "Вы должны учиться в школе"
+    elif  age1 == 18:
+      activity = "Вы должны учиться в школе или ВУЗе"
+    elif  18 < age1 <= 22:
+      activity = "Вы должны учиться ВУЗе"
+    elif  23 <= age1 <= 24:
+      activity = "Вы должны учиться ВУЗе или работать"
+    elif  24 < age1 < 65:
+      activity = "Вы должны работать"
+    elif  65 <= age1 < 130:
+      activity = "Вы должны работать или быть на пенсии"
+    else:
+      activity = "Ошибка! Введен не корректный возраст!"
+    
+    return activity
+  
+    
+        
 def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+    age = input("Введите возраст:")
+    try:
+      age = int(float(age))
+      action = work(age)
+      print(action)
+    except ValueError:
+      print("Ошибка! Введено не число!")
+    
+
+
 
 if __name__ == "__main__":
     main()
