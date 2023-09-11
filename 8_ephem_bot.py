@@ -38,13 +38,11 @@ def greet_user(update, context):
 
 
 def greet_user_planet(update, context):
-    dt_now = datetime.today().date()        #Получение сегодняшней даты
-    dt_now=str(dt_now)
-    dt_now=dt_now.replace("-", "/")
-    user_text = update.message.text.split() #Разбиение сообщения от пользователя
-    if hasattr(ephem, user_text[1]):             #В зависимости от введенной пользователем планеты выведется соответствующее сообщение
-      planet = getattr(ephem, user_text[1])(dt_now)
-      constellation = f"{user_text[1]} сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
+    dt_now = datetime.today()        #Получение сегодняшней даты
+    user_text = update.message.text.split()[1] #Разбиение сообщения от пользователя
+    if hasattr(ephem, user_text):             #В зависимости от введенной пользователем планеты выведется соответствующее сообщение
+      planet = getattr(ephem, user_text)(dt_now)
+      constellation = f"{user_text} сегодня находится в созвездии: {ephem.constellation(planet)[1]}"
     else:
        constellation = "Некорректно введено название планеты."
     print(constellation)
