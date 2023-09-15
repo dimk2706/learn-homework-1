@@ -16,14 +16,15 @@
 """
 
 def compare(st1, st2):
-    if not isinstance(st1, str) or not isinstance(st2, str):         # В данном случае используется именно or так как в задании сказано: "Проверить, является ли то, что передано функции, строками", если хотя бы одна из переменных не строка возвращаем 0
-       return 0
-    elif st1==st2:
-       return 1
-    elif len(st1) > len(st2):
-       return 2
-    elif st2 == "learn":
-       return 3
+   if isinstance(st1, str) and isinstance(st2, str):         # В данном случае используется именно or так как в задании сказано: "Проверить, является ли то, что передано функции, строками", если хотя бы одна из переменных не строка возвращаем 0
+      if st1==st2:
+         return 1
+      elif st1 != st2 and len(st1) > len(st2):
+         return 2
+      elif st1 != st2 and st2 == "learn":
+         return 3
+   else:
+      return 0
       
 
 def main():
@@ -48,8 +49,6 @@ def main():
 
 
 
-
-  
     
 if __name__ == "__main__":
     main()
